@@ -1,0 +1,38 @@
+name: wb-marketplace-api
+version: 2.0.0
+description: Wildberries (WB) Marketplace API skills — CLI-based, key-isolated
+author: generated from Wildberries OpenAPI specs
+platforms:
+  - claude
+  - chatgpt
+  - copilot
+  - gemini
+  - any-llm
+
+# 架构说明:
+#   AI → skills/*.md (只描述命令) → node wb-cli.mjs → WB API
+#   API Key 只存在于 config.json，AI 永不接触
+
+entrypoint: SKILL.md
+config: config.json
+
+skills:
+  - name: wb-products
+    file: skills/products.md
+    commands: products.*
+    description: 商品管理 - 类目/品牌/商品卡/仓库库存
+
+  - name: wb-orders-fbs
+    file: skills/orders-fbs.md
+    commands: orders.* supplies.* passes.*
+    description: FBS订单/供应/通行证/元数据
+
+  - name: wb-communications
+    file: skills/communications.md
+    commands: communications.*
+    description: 客户沟通 - 问答/评价/聊天/退货
+
+  - name: wb-analytics
+    file: skills/analytics.md
+    commands: analytics.*
+    description: 数据分析 - 销售漏斗/搜索词/库存/CSV报表
